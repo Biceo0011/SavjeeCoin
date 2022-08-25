@@ -72,3 +72,65 @@ describe('Block class', function() {
     });
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+describe('Calculate hash', function() {
+  it('should correct calculate the SHA256', function() {
+    blockObj.timestamp = 1;
+    blockObj.mineBlock(1);
+
+    assert.strict.equal(
+      blockObj.hash,
+      '07d2992ddfcb8d538075fea2a6a33e7fb546c18038ae1a8c0214067ed66dc393'
+    );
+  });
+
+  it('should change when we tamper with the tx', function() {
+    const origHash = blockObj.calculateHash();
+    blockObj.timestamp = 100;
+
+    assert.strict.notEqual(
+      blockObj.calculateHash(),
+      origHash
+    );
+  });
+});
+describe('Calculate hash', function() {
+  it('should correct calculate the SHA256', function() {
+    blockObj.timestamp = 1;
+    blockObj.mineBlock(1);
+
+    assert.strict.equal(
+      blockObj.hash,
+      '07d2992ddfcb8d538075fea2a6a33e7fb546c18038ae1a8c0214067ed66dc393'
+    );
+  });
+
+  it('should change when we tamper with the tx', function() {
+    const origHash = blockObj.calculateHash();
+    blockObj.timestamp = 100;
+
+    assert.strict.notEqual(
+      blockObj.calculateHash(),
+      origHash
+    );
+  });
+});
